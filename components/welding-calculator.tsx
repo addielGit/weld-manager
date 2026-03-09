@@ -57,7 +57,7 @@ export function WeldingCalculator({ findConfig }: WeldingCalculatorProps) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
               <Search className="h-5 w-5 text-primary" />
             </div>
-            Seleccionar Parametros Iniciales
+            Seleccionar Parametros
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 pt-5">
