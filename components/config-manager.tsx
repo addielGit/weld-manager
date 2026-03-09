@@ -79,11 +79,32 @@ export function ConfigManager({
 
   const handleAdd = () => {
     if (formData.tipoTubo && formData.tipoAulet && formData.tamanoAulet) {
+      // Verificar si ya existe una configuracion igual
+      const isDuplicate = configs.some(
+        (config) =>
+          config.tipoTubo === formData.tipoTubo &&
+          config.tipoAulet === formData.tipoAulet &&
+          config.tamanoAulet === formData.tamanoAulet,
+      );
+
+      if (isDuplicate) {
+        alert("Esta configuración ya existe y no se puede agregar duplicada.");
+        return;
+      }
+
       addConfig(formData);
       resetForm();
       setShowAddForm(false);
     }
   };
+
+  /*   const handleAdd = () => {
+    if (formData.tipoTubo && formData.tipoAulet && formData.tamanoAulet) {
+      addConfig(formData);
+      resetForm();
+      setShowAddForm(false);
+    }
+  }; */
 
   const handleEdit = (config: WeldingConfig) => {
     setEditingId(config.id);
