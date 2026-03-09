@@ -1,16 +1,25 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useWeldingStorage } from '@/hooks/use-welding-storage'
-import { Settings, Flame, Search, ChevronRight, Thermometer, Zap, Circle, Ruler } from 'lucide-react'
-import { WeldingCalculator } from '@/components/welding-calculator'
-import { ConfigManager } from '@/components/config-manager'
-import Image from 'next/image'
+import { useState } from "react";
+import { useWeldingStorage } from "@/hooks/use-welding-storage";
+import {
+  Settings,
+  Flame,
+  Search,
+  ChevronRight,
+  Thermometer,
+  Zap,
+  Circle,
+  Ruler,
+} from "lucide-react";
+import { WeldingCalculator } from "@/components/welding-calculator";
+import { ConfigManager } from "@/components/config-manager";
+import Image from "next/image";
 
-type View = 'home' | 'consultar' | 'gestionar'
+type View = "home" | "consultar" | "gestionar";
 
 export default function Home() {
-  const [currentView, setCurrentView] = useState<View>('home')
+  const [currentView, setCurrentView] = useState<View>("home");
   const {
     configs,
     isLoaded,
@@ -19,7 +28,7 @@ export default function Home() {
     deleteConfig,
     deleteAllConfigs,
     findConfig,
-  } = useWeldingStorage()
+  } = useWeldingStorage();
 
   if (!isLoaded) {
     return (
@@ -29,24 +38,28 @@ export default function Home() {
           <p className="mt-4 text-sm text-muted-foreground">Cargando...</p>
         </div>
       </main>
-    )
+    );
   }
 
   // Vista de Consultar
-  if (currentView === 'consultar') {
+  if (currentView === "consultar") {
     return (
       <main className="flex min-h-screen flex-col bg-background">
         <header className="sticky top-0 z-20 border-b border-border/50 bg-background/95 backdrop-blur-sm">
           <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-3">
-            <button 
-              onClick={() => setCurrentView('home')}
+            <button
+              onClick={() => setCurrentView("home")}
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary"
             >
               <ChevronRight className="h-5 w-5 rotate-180" />
             </button>
             <div>
-              <h1 className="text-base font-bold text-foreground">Consultar Parametros</h1>
-              <p className="text-xs text-muted-foreground">Selecciona tubo y aulet</p>
+              <h1 className="text-base font-bold text-foreground">
+                Consultar Parametros
+              </h1>
+              <p className="text-xs text-muted-foreground">
+                Selecciona tubo y aulet
+              </p>
             </div>
           </div>
         </header>
@@ -54,24 +67,28 @@ export default function Home() {
           <WeldingCalculator findConfig={findConfig} />
         </div>
       </main>
-    )
+    );
   }
 
   // Vista de Gestionar
-  if (currentView === 'gestionar') {
+  if (currentView === "gestionar") {
     return (
       <main className="flex min-h-screen flex-col bg-background">
         <header className="sticky top-0 z-20 border-b border-border/50 bg-background/95 backdrop-blur-sm">
           <div className="mx-auto flex max-w-lg items-center gap-3 px-4 py-3">
-            <button 
-              onClick={() => setCurrentView('home')}
+            <button
+              onClick={() => setCurrentView("home")}
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary"
             >
               <ChevronRight className="h-5 w-5 rotate-180" />
             </button>
             <div>
-              <h1 className="text-base font-bold text-foreground">Gestionar Parametros</h1>
-              <p className="text-xs text-muted-foreground">{configs.length} configuraciones</p>
+              <h1 className="text-base font-bold text-foreground">
+                Gestionar Parametros
+              </h1>
+              <p className="text-xs text-muted-foreground">
+                {configs.length} configuraciones
+              </p>
             </div>
           </div>
         </header>
@@ -85,7 +102,7 @@ export default function Home() {
           />
         </div>
       </main>
-    )
+    );
   }
 
   // Vista Home / Dashboard
@@ -99,8 +116,12 @@ export default function Home() {
               <Flame className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h1 className="text-base font-bold text-foreground">WeldManager</h1>
-              <p className="text-xs text-muted-foreground">Parametros de Soldadura</p>
+              <h1 className="text-base font-bold text-foreground">
+                WeldManager
+              </h1>
+              <p className="text-xs text-muted-foreground">
+                Parametros de Soldadura
+              </p>
             </div>
           </div>
           <button className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-secondary">
@@ -126,7 +147,7 @@ export default function Home() {
               Prototipo v1.0
             </p>
             <h2 className="text-xl font-bold leading-tight text-white">
-              Consulta rapida<br />de parametros
+              Consulta rapida de parametros
             </h2>
             <p className="mt-1 text-xs text-white/70">
               Tubo - Tipo - Aulet → Configuracion
@@ -137,7 +158,7 @@ export default function Home() {
         {/* Botones de navegacion principales */}
         <div className="mb-5 space-y-3">
           <button
-            onClick={() => setCurrentView('consultar')}
+            onClick={() => setCurrentView("consultar")}
             className="flex w-full items-center justify-between rounded-xl bg-primary p-4 text-left shadow-lg shadow-primary/20 transition-transform active:scale-[0.98]"
           >
             <div className="flex items-center gap-3">
@@ -145,15 +166,19 @@ export default function Home() {
                 <Search className="h-5 w-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="font-semibold text-primary-foreground">Consultar Parametros</p>
-                <p className="text-xs text-primary-foreground/70">Selecciona tubo y aulet</p>
+                <p className="font-semibold text-primary-foreground">
+                  Consultar Parametros
+                </p>
+                <p className="text-xs text-primary-foreground/70">
+                  Selecciona tubo y aulet
+                </p>
               </div>
             </div>
             <ChevronRight className="h-5 w-5 text-primary-foreground" />
           </button>
 
           <button
-            onClick={() => setCurrentView('gestionar')}
+            onClick={() => setCurrentView("gestionar")}
             className="flex w-full items-center justify-between rounded-xl bg-card border border-border/50 p-4 text-left transition-transform active:scale-[0.98]"
           >
             <div className="flex items-center gap-3">
@@ -161,8 +186,13 @@ export default function Home() {
                 <Settings className="h-5 w-5 text-muted-foreground" />
               </div>
               <div>
-                <p className="font-semibold text-foreground">Gestionar Parametros</p>
-                <p className="text-xs text-muted-foreground">{configs.length} combinacion{configs.length !== 1 ? 'es' : ''} guardada{configs.length !== 1 ? 's' : ''}</p>
+                <p className="font-semibold text-foreground">
+                  Gestionar Parametros
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {configs.length} combinacion{configs.length !== 1 ? "es" : ""}{" "}
+                  guardada{configs.length !== 1 ? "s" : ""}
+                </p>
               </div>
             </div>
             <ChevronRight className="h-5 w-5 text-muted-foreground" />
@@ -176,7 +206,9 @@ export default function Home() {
               <Thermometer className="h-5 w-5 text-orange-500" />
             </div>
             <p className="font-semibold text-foreground">Temperatura</p>
-            <p className="text-xs text-muted-foreground">Rango optimo por combinacion</p>
+            <p className="text-xs text-muted-foreground">
+              Rango optimo por combinacion
+            </p>
           </div>
 
           <div className="rounded-xl bg-card border border-border/50 p-4">
@@ -184,7 +216,9 @@ export default function Home() {
               <Zap className="h-5 w-5 text-primary" />
             </div>
             <p className="font-semibold text-foreground">Alambre</p>
-            <p className="text-xs text-muted-foreground">Valor numerico recomendado</p>
+            <p className="text-xs text-muted-foreground">
+              Valor numerico recomendado
+            </p>
           </div>
 
           <div className="rounded-xl bg-card border border-border/50 p-4">
@@ -192,7 +226,9 @@ export default function Home() {
               <Circle className="h-5 w-5 text-rose-500" />
             </div>
             <p className="font-semibold text-foreground">Hueco</p>
-            <p className="text-xs text-muted-foreground">Tamano exacto a abrir</p>
+            <p className="text-xs text-muted-foreground">
+              Tamano exacto a abrir
+            </p>
           </div>
 
           <div className="rounded-xl bg-card border border-border/50 p-4">
@@ -200,7 +236,9 @@ export default function Home() {
               <Ruler className="h-5 w-5 text-primary" />
             </div>
             <p className="font-semibold text-foreground">Antorcha</p>
-            <p className="text-xs text-muted-foreground">Distancia de la boquilla</p>
+            <p className="text-xs text-muted-foreground">
+              Distancia de la boquilla
+            </p>
           </div>
         </div>
       </div>
@@ -212,5 +250,5 @@ export default function Home() {
         </p>
       </footer>
     </main>
-  )
+  );
 }
