@@ -141,7 +141,7 @@ export function WeldingCalculator({ findConfig }: WeldingCalculatorProps) {
 
       {tipoTubo && tipoAulet && tamanoAulet && (
         <Card className="animate-in fade-in-50 overflow-hidden border-border/50 bg-card shadow-lg duration-200">
-          <CardHeader className="border-b border-border/30 bg-primary/10 pb-4">
+          <CardHeader className="border-b border-border/30 pb-4">
             <CardTitle className="flex items-center gap-3 text-lg font-bold text-foreground">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/20">
                 <Flame className="h-5 w-5 text-primary" />
